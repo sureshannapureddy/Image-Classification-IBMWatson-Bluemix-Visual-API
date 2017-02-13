@@ -116,6 +116,13 @@ service accepts a maximum of 256 MB , retrained timestamp will be updated with t
 
 curl -X DELETE "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/$CLASSIFIER?api_key=$API_KEY&version=2016-05-20"
 
+## Classify an image with the custom classifier
+
+curl -X POST -F "images_file=@test/apple_pie/1011328.jpg" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=$API_KEY&classifier_ids=$CLASSIFIER&version=2016-05-20"
+
+It is possible to request multiple classifiers at the same time, by separating classifier IDs with a comma. The default classifier is ‘Default’.
+
+
 ## Compute accuracy of Watson Visual API
 
-let's create a python script [accuracy_watson.py]() to compute Watson top-1 and top-5 accuracy :
+let's create a python script [accuracy_watson.py]() to compute Watson top-1 and top-5 accuracy.
