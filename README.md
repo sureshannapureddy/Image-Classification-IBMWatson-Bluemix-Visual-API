@@ -58,6 +58,53 @@ which gives
 }
 ]}
 
+or parse response.json to get the classifier ID :
+
+{
+"classifier_id": "food101_1404391194",
+"name": "food-101",
+"owner": "de67af8c-862c-4002-88a8-259653c880c4",
+"status": "training",
+"created": "2016-12-21T15:32:10.458Z",
+"classes": [
+    {"class": "beef_carpaccio"},
+    {"class": "baklava"},
+    {"class": "baby_back_ribs"},
+    {"class": "apple_pie"},
+    {"class": "bibimbap"},
+    {"class": "beignets"},
+    {"class": "beet_salad"},
+    {"class": "beef_tartare"},
+    {"class": "breakfast_burrito"},
+    {"class": "bread_pudding"}
+]
+}
+
+CLASSIFIER=`cat response.json | python -c "import json,sys;obj=json.load(sys.stdin);print obj['classifier_id'];"`
+
+You can retrieve more info about the classifier :
+
+curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/$CLASSIFIER?api_key=$API_KEY&version=2016-05-20"
+
+{
+    "classifier_id": "food101_1404391194",
+    "name": "food-101",
+    "owner": "de67af8c-862c-4002-88a8-259653c880c4",
+    "status": "ready",
+    "created": "2016-12-21T15:32:10.458Z",
+    "classes": [
+        {"class": "beef_carpaccio"},
+        {"class": "baklava"},
+        {"class": "baby_back_ribs"},
+        {"class": "apple_pie"},
+        {"class": "bibimbap"},
+        {"class": "beignets"},
+        {"class": "beet_salad"},
+        {"class": "beef_tartare"},
+        {"class": "breakfast_burrito"},
+        {"class": "bread_pudding"}
+    ]
+}
 
 ## Update custom classifier
 
