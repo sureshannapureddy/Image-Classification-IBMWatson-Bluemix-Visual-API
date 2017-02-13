@@ -23,6 +23,27 @@ curl -X POST -F "images_file=@test/apple_pie/1011328.jpg" "https://gateway-a.wat
    
 ## Create custom classifier
 
+Before uploading images to the classifier, we need to verify that each zip file is no more than 100 MB and 10 000 images per .zip file, no less than 10 images per size.
+
+du -h food-101/images/*.zip
+
+Each zip file is around 25MB (well balanced dataset - have the same number of images per class). Each zip file should not be above 100MB, otherwise we would have to divide them into multiple zip files.
+
+Create the classifier under the name food-101. For creation, the service accepts a maximum of 300 MB so we can only upload up to 10 classes per update.
+
+DATA=`pwd`/food-101/images
+FIRST_CLASSES=`ls train/*.zip | awk 'NR >=1 && NR <=10 {split($0,a,"."); split(a[1],a,"/"); printf " -F " a[2] "_positive_examples=@" $0 }' -  `
+echo $FIRST_CLASSES
+
+returns what we need : -F apple_pie_positive_examples=@food-101/images/apple_pie.zip -F baby_back_ribs_positive_examples=@food-101/images/baby_back_ribs.zip -F baklava_positive_examples=@food-101/images/baklava.zip -F beef_carpaccio_positive_examples=@food-101/images/beef_carpaccio.zip -F beef_tartare_positive_examples=@food-101/images/beef_tartare.zip -F beet_salad_positive_examples=@food-101/images/beet_salad.zip -F beignets_positive_examples=@food-101/images/beignets.zip -F bibimbap_positive_examples=@food-101/images/bibimbap.zip -F bread_pudding_positive_examples=@food-101/images/bread_pudding.zip -F breakfast_burrito_positive_examples=@food-101/images/breakfast_burrito.zip
+
+
+# Let’s upload them
+
+curl -X POST $FIRST_CLASSES -F "name=food-101" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=$API_KEY&version=2016-05-20" > response.json
+
+
+
 ## List existing classifiers
 
 curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=$API_KEY&version=2016-05-20"
