@@ -21,8 +21,14 @@ $API_KEY is your IBM API KEY.
 
 curl -X POST -F "images_file=@test/apple_pie/1011328.jpg" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classify?api_key=$API_KEY&version=2016-05-20"
    
-## Create a custom classifier
+## Create custom classifier
 
+## Update custom classifier
+
+
+## Delete custom classifier
+
+curl -X DELETE "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers/$CLASSIFIER?api_key=$API_KEY&version=2016-05-20"
 
 ## Compute accuracy of Watson Visual API
 
