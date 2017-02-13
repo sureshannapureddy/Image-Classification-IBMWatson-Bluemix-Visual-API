@@ -25,6 +25,9 @@ curl -X POST -F "images_file=@test/apple_pie/1011328.jpg" "https://gateway-a.wat
 
 ## Update custom classifier
 
+service accepts a maximum of 256 MB , retrained timestamp will be updated with the last retraining update, below program will make sure that the server is in ready state to retrain the classifier.
+
+[UpdateClassifier.sh](https://github.com/sureshannapureddy/Image-Classification/blob/master/UpdateClassifier.sh)
 
 ## Delete custom classifier
 
