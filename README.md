@@ -23,6 +23,21 @@ curl -X POST -F "images_file=@test/apple_pie/1011328.jpg" "https://gateway-a.wat
    
 ## Create custom classifier
 
+## List existing classifiers
+
+curl -X GET "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=$API_KEY&version=2016-05-20"
+
+which gives
+
+{"classifiers": [
+{
+    "classifier_id": "food101_1404391194",
+    "name": "food-101",
+    "status": "training"
+}
+]}
+
+
 ## Update custom classifier
 
 service accepts a maximum of 256 MB , retrained timestamp will be updated with the last retraining update, below program will make sure that the server is in ready state to retrain the classifier.
