@@ -6,9 +6,9 @@ we will compute its accuracy
 
 # Steps to Follow :
 ## Sample Dataset
-   Download [Food 101 dataset](https://www.vision.ee.ethz.ch/datasets_extra/food-101/) for classification.
+   1.Download [Food 101 dataset](https://www.vision.ee.ethz.ch/datasets_extra/food-101/) for classification.
    
-   Resize all images to 320 max dimension because IBM Watson Visual Recognition accepts images not more than 320x320.
+   2.Resize all images to 320 max dimension because IBM Watson Visual Recognition accepts images not more than 320x320.
    
-   create train and test directories
+   3.Create train and test directories
    
