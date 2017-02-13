@@ -38,7 +38,7 @@ echo $FIRST_CLASSES
 returns what we need : -F apple_pie_positive_examples=@food-101/images/apple_pie.zip -F baby_back_ribs_positive_examples=@food-101/images/baby_back_ribs.zip -F baklava_positive_examples=@food-101/images/baklava.zip -F beef_carpaccio_positive_examples=@food-101/images/beef_carpaccio.zip -F beef_tartare_positive_examples=@food-101/images/beef_tartare.zip -F beet_salad_positive_examples=@food-101/images/beet_salad.zip -F beignets_positive_examples=@food-101/images/beignets.zip -F bibimbap_positive_examples=@food-101/images/bibimbap.zip -F bread_pudding_positive_examples=@food-101/images/bread_pudding.zip -F breakfast_burrito_positive_examples=@food-101/images/breakfast_burrito.zip
 
 
-# Let’s upload them
+### Let’s upload them
 
 curl -X POST $FIRST_CLASSES -F "name=food-101" "https://gateway-a.watsonplatform.net/visual-recognition/api/v3/classifiers?api_key=$API_KEY&version=2016-05-20" > response.json
 
